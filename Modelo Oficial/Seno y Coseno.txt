@@ -1,0 +1,44 @@
+🎯 ¿Por qué seno y coseno específicamente?
+1. Representación Única de Posición
+🔢 Problema: Necesitas que cada timestep (0-1000) tenga una representación única y distinguible
+✨ Solución: Las funciones trigonométricas crean patrones únicos para cada número
+2. Periodicidad Controlada
+3. Inspiración de los Transformers
+Este Positional Encoding viene directamente del paper "Attention Is All You Need" (2017). Los creadores descubrieron que seno/coseno son perfectos para:
+
+✅ Extrapolación: Funciona con timesteps nunca vistos
+✅ Suavidad: Cambios graduales entre posiciones cercanas
+✅ Riqueza: Múltiples frecuencias capturan patrones a diferentes escalas
+🧠 ¿Por qué no usar otras funciones?
+❌ Embeddings Simples:
+Problema: No generaliza a timesteps nuevos
+Problema: No tiene relación entre posiciones cercanas
+❌ Función Lineal:
+Problema: Muy poca información
+Problema: No captura periodicidades
+✅ Seno/Coseno:
+✅ Rico en información
+✅ Generalizable
+✅ Matemáticamente elegante
+🎨 Analogía Visual:
+Imagina que cada timestep es como una "coordenada en un reloj cósmico":
+
+Pero con múltiples relojes girando a diferentes velocidades (frecuencias), creando un "fingerprint" único para cada momento.
+
+🔍 En tu contexto específico:
+¿Por qué tu modelo necesita esto?
+🕐 Conciencia temporal: El modelo debe saber "¿en qué paso estoy del proceso de 1000?"
+🎯 Precisión de denoising: Diferente cantidad de ruido requiere diferentes estrategias
+📊 Representación rica: 128 dimensiones de información vs solo 1 número
+¿Qué pasaría sin seno/coseno?
+❌ El modelo no sabría si está en el paso 100 o 900
+❌ Aplicaría la misma estrategia de denoising en todos los pasos
+❌ Resultados mucho peores
+💡 Conclusión:
+Seno y coseno no son arbitrarios - son la solución matemáticamente óptima para codificar posición temporal de manera que:
+
+Cada timestep tenga una "huella dactilar" única
+Posiciones cercanas tengan representaciones similares
+El modelo pueda generalizar a nuevos timesteps
+Se capture información a múltiples escalas temporales
+Es pura elegancia matemática aplicada a un problema práctico. Los creadores de Transformers fueron geniales al descubrir esto, y ahora se usa en casi todos los modelos que necesitan entender secuencias o tiempo.
